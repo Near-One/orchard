@@ -33,7 +33,7 @@ use {
     nonempty::NonEmpty,
 };
 
-const MIN_ACTIONS: usize = 2;
+const MIN_ACTIONS: usize = 1;
 
 /// An enumeration of rules for Orchard bundle construction.
 #[derive(Clone, Copy, Debug, PartialEq, Eq)]
