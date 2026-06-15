@@ -6,8 +6,8 @@
 //! - [`ValueSum`], the sum of note values within an Orchard [`Action`] or [`Bundle`].
 //!   It is a signed 64-bit integer (with range [`VALUE_SUM_RANGE`]).
 //! - `valueBalanceOrchard`, which is a signed 63-bit integer. This is represented
-//!    by a user-defined type parameter on [`Bundle`], returned by
-//!    [`Bundle::value_balance`] and [`Builder::value_balance`].
+//!   by a user-defined type parameter on [`Bundle`], returned by
+//!   [`Bundle::value_balance`] and [`Builder::value_balance`].
 //!
 //! If your specific instantiation of the Orchard protocol requires a smaller bound on
 //! valid note values (for example, Zcash's `MAX_MONEY` fits into a 51-bit integer), you
@@ -100,10 +100,10 @@ impl std::error::Error for BalanceError {}
 pub struct NoteValue(u64);
 
 impl NoteValue {
-    pub(crate) fn zero() -> Self {
-        // Default for u64 is zero.
-        Default::default()
-    }
+    /// The zero note value.
+    ///
+    /// Equivalent to `NoteValue::from_raw(0)`.
+    pub const ZERO: Self = NoteValue(0);
 
     /// Returns the raw underlying value.
     pub fn inner(&self) -> u64 {
